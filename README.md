@@ -3,7 +3,7 @@
 
 ## Data Structure
 #### Dictionary: HashMap<String, List<String>>
-This is the class Dictionary which contains a hashmap including slang word (String) and its meaning (List<String)
+This is the class Dictionary which contains a hashmap including slang word (String) and its meaning (List<String>)
 
 ## GUI
 Java Swing
