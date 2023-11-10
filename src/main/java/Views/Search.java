@@ -17,7 +17,6 @@ public class Search extends JPanel {
     private JButton searchButton;
 
     public Search(String text) {
-//        this.formatPane = container;
         setLayout(new FlowLayout(FlowLayout.CENTER));
         JPanel formatPane = new JPanel(new FlowLayout(FlowLayout.CENTER));
 

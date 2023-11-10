@@ -10,23 +10,27 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 public class Result extends JPanel {
-    private JLabel resultSearch;
+    private JTextArea resultSearch;
 
-    public JLabel getResultSearch() {
+    public JTextArea getResultSearch() {
         return resultSearch;
     }
 
-    public void setResultSearch(JLabel result) {
+    public void setResultSearcsh(JTextArea result) {
         this.resultSearch = result;
     }
 
     public Result() {
         setBorder(new TitledBorder(new EmptyBorder(1, 1, 1, 1), "Result:"));
-    }
-    public Result(String text) {
-        setBorder(new TitledBorder(new EmptyBorder(1, 1, 1, 1), "Result:"));
-        resultSearch = new JLabel(text);
-        add(resultSearch);
+        resultSearch = new JTextArea(10,50);
+        resultSearch.setEditable(false);
+        resultSearch.setLineWrap(true);
+        resultSearch.setWrapStyleWord(true);
+
+        JScrollPane scrollPane = new JScrollPane(resultSearch);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        add(scrollPane);
     }
 
 }
