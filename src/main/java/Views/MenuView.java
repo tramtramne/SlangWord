@@ -5,15 +5,7 @@
  */
 package Views;
 
-//        searchByDef = new JButton("Search by Definition");
-//        addNewSlang = new JButton("Add a new Slang Word");
-//        editSlang = new JButton("Edit a Slang Word");
-//        deleteSlang = new JButton("Delete a Slang Word");
-//        randomSlang = new JButton("Random a Slang Word");
-//        showHistory = new JButton("Show history");
-//        quiz1 = new JButton("Quiz 1");
-//        quiz2 = new JButton("Quiz 2");
-//        reset = new JButton("Rest Dictionary");
+
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,7 +13,10 @@ import java.awt.*;
 
 public class MenuView extends JPanel {
 
-    private JPanel panelMenu;
+    public JButton[] getButtons() {
+        return buttons;
+    }
+
     private JButton[] buttons;
 
     public MenuView() {
@@ -48,6 +43,38 @@ public class MenuView extends JPanel {
             add(button);
         }
 
-//        add(panelMenu);
     }
+
+    public JButton getSearchBySlangWordButtons() {
+        return buttons[0];
+    }
+    public JButton getSearchByDefButtons() {
+        return buttons[1];
+    }
+    public JButton getAddNewSlangButtons() {
+        return buttons[2];
+    }
+    public JButton getEditSlangButtons() {
+        return buttons[3];
+    }
+    public JButton getDeleteSlangButtons() {
+        return buttons[4];
+    }
+    public JButton getRandomSlangButtons() {
+        return buttons[5];
+    }
+    public JButton getShowHistoryButtons() {
+        return buttons[6];
+    }
+    public JButton getQuiz1Buttons() {
+        return buttons[7];
+    }
+
+    public JButton getQuiz2Buttons() {
+        return buttons[8];
+    }
+    public JButton getRestButtons() {
+        return buttons[9];
+    }
+
 }
