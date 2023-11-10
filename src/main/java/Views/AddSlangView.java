@@ -45,8 +45,12 @@ public class AddSlangView extends JPanel {
         return addDef.getText();
     }
 
-    public String getAddButtonText() {
-        return addButton.getText();
+    public void setAddButton(JButton addButton) {
+        this.addButton = addButton;
+    }
+
+    public JButton getAddButton() {
+        return addButton;
     }
     public void setSlangWordText(String text) {
         addSlangWord.setText(text);
@@ -55,9 +59,6 @@ public class AddSlangView extends JPanel {
         addDef.setText(text);
     }
 
-    public void setAddButtonText(String text) {
-
-    }
 }
 
 
