@@ -72,7 +72,6 @@ public class Quiz1Controller implements ActionListener {
     }
 
     public void displayQuiz(boolean isFirst){
-//        public void displayQuiz(){
             String answer = getRandomSlangWord();
             List<String> options = createQuizOptions(answer);
             String quizQuestion = "What is the meaning of the slang word: " + answer;
@@ -94,7 +93,7 @@ public class Quiz1Controller implements ActionListener {
 
 
         }
-//    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton clickedButton = (JButton) e.getSource();
@@ -104,13 +103,11 @@ public class Quiz1Controller implements ActionListener {
 //            quizView.reset();
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect answer! The correct answer is: " + correctAnswer);
-//            quizView.reset();
+
         }
-//        quizView.reset();
         displayQuiz(false);
     }
     public void reset(){
-//        List<String> temp =
         JButton[] buttons = quizView.getAnswerButtons();
         for (JButton option: buttons){
             option.removeActionListener(this);

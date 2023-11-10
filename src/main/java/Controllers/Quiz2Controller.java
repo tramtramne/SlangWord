@@ -90,7 +90,7 @@ public class Quiz2Controller implements ActionListener {
 
 
     }
-    //    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton clickedButton = (JButton) e.getSource();
@@ -105,10 +105,6 @@ public class Quiz2Controller implements ActionListener {
         displayQuiz(false);
     }
     public void reset(){
-//        List<String> temp = new ArrayList<>();
-//        quizView.setQuestionLabel("");
-//        quizView.setAnswerTextButtons(temp);
-//        quizView.setButtonListen(null);
         JButton[] buttons = quizView.getAnswerButtons();
         for (JButton option: buttons){
             option.removeActionListener(this);

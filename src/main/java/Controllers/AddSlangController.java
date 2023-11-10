@@ -24,13 +24,7 @@ public class AddSlangController implements ActionListener {
         JButton addBtn = this.addSlangView.getAddButton();
         addBtn.addActionListener(this);
     }
-
     public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
-
-    public AddSlangController(AddSlangView addSlangView, Dictionary dictionary) {
-        this.addSlangView = addSlangView;
         this.dictionary = dictionary;
     }
 
@@ -64,10 +58,8 @@ public class AddSlangController implements ActionListener {
                 } else
                 if ((option == JOptionPane.NO_OPTION)){
                     List<String> definitions = new ArrayList<>(dictionary.getSlangList().get(slangWord));
-//                    definitions.add(definition);
                     definitions.add(definition);
                     dictionary.getSlangList().put(slangWord, definitions);
-                    definitions = null;
                     JOptionPane.showMessageDialog(null, "New slang word added successfully: " + slangWord);
                 }
         } else {
@@ -79,11 +71,6 @@ public class AddSlangController implements ActionListener {
         addSlangView.setDefinition("");
     }
 
-    private void addSlangWord(String slangWord, String definition) {
-        List<String> definitions = new ArrayList<>();
-        definitions.add(definition);
-        dictionary.getSlangList().put(slangWord, definitions);
-    }
     public void reset(){
         addSlangView.getAddButton().removeActionListener(this);
         addSlangView.setDefinition("");

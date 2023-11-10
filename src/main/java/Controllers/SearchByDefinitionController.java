@@ -27,8 +27,6 @@ public class SearchByDefinitionController  implements ActionListener {
         this.view = view;
         view.getSearch().getSearchButton().addActionListener(e -> {
             String keyword = view.getSearch().getSearchField().getText();
-//            List<String> slangWords = findSlangWordsByDefinition(keyword);
-//            view.getResult().getResultSearch().append(String.join("\n", slangWords));
         });
         view.getSearch().getSearchButton().addActionListener(this);
     }
