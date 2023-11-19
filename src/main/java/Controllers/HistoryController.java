@@ -21,7 +21,4 @@ public class HistoryController {
 
     public HistoryController() {
     }
-    public void reset(){
-        historyView.setHistoryText("");
-    }
 }
