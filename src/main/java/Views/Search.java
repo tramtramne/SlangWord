@@ -31,6 +31,7 @@ public class Search extends JPanel {
         add(formatPane);
     }
 
+
     public JButton getSearchButton() {
         return searchButton;
     }

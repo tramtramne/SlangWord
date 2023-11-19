@@ -9,11 +9,17 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class AddSlangView extends JPanel {
+public class AddandEditSlangView extends JPanel {
     private JButton addButton;
+    private JButton editButton;
     private JTextField addSlangWord;
     private JTextArea addDef;
-    public AddSlangView(){
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public AddandEditSlangView(String AddorEdit){
         setBorder(new EmptyBorder(8, 8, 8, 8));
         setLayout(new BorderLayout());
 
@@ -35,7 +41,18 @@ public class AddSlangView extends JPanel {
         buttonPanel.setLayout(new FlowLayout());
         addButton = new JButton("Add");
         addButton.setPreferredSize(new Dimension(80, 25));
+        editButton = new JButton("Edit");
+        editButton.setPreferredSize(new Dimension(80, 25));
         buttonPanel.add(addButton);
+        buttonPanel.add(editButton);
+        if (AddorEdit == "add") {
+//            editButton.removeActionListener(e);
+            addButton.setVisible(true);
+            editButton.setVisible(false);
+        }
+        else{ addButton.setVisible(false);
+            editButton.setVisible(true);}
+
         add(buttonPanel, BorderLayout.SOUTH);
     }
     public String getSlangWordText() {

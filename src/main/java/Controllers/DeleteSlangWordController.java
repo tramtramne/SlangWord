@@ -12,9 +12,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Controllers.DictionaryController.DICTONARY;
+
 public class DeleteSlangWordController implements ActionListener {
     private DeleteSlangWordView deleteSlangWordView;
-    private Dictionary dictionary;
+//    private Dictionary dictionary;
     public DeleteSlangWordView getDeleteSlangWordView() {
         return this.deleteSlangWordView;
     }
@@ -26,12 +28,9 @@ public class DeleteSlangWordController implements ActionListener {
     }
 
     public Dictionary getDictionary() {
-        return dictionary;
+        return DICTONARY;
     }
 
-    public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
     public DeleteSlangWordController(){}
 
     @Override
@@ -43,10 +42,10 @@ public class DeleteSlangWordController implements ActionListener {
             return;
         }
 
-        if (dictionary.getSlangList().containsKey(slangWord)) {
+        if (DICTONARY.getSlangList().containsKey(slangWord)) {
             int option = JOptionPane.showConfirmDialog(deleteSlangWordView, "Are you sure you want to delete the slang word " + slangWord + "?", "Delete Slang Word", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
-                dictionary.getSlangList().remove(slangWord);
+                DICTONARY.getSlangList().remove(slangWord);
                 JOptionPane.showMessageDialog(deleteSlangWordView, "Slang word deleted successfully.");
                 deleteSlangWordView.getEditSlangWord().setText("");
             }
@@ -55,7 +54,6 @@ public class DeleteSlangWordController implements ActionListener {
         }
     }
     public void reset(){
-        deleteSlangWordView.getEditButton().removeActionListener(this);
         deleteSlangWordView.getEditSlangWord().setText("");
     }
 }

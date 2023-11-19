@@ -11,10 +11,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class SearchBySlangView extends JPanel{
+public class SearchView extends JPanel{
+    String searchFunction;
     Search search;
     Result result;
-    public SearchBySlangView() {
+
+    public SearchView(String searchFunction) {
         setBorder(new EmptyBorder(8, 8, 8, 8));
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -24,7 +26,8 @@ public class SearchBySlangView extends JPanel{
         gbc.weightx = 1;
 
         // Create a new Search object
-        search = new Search("Input slang word");
+        this.searchFunction = searchFunction;
+        search = new Search(this.searchFunction );
         search.setBorder(new CompoundBorder(new TitledBorder("Search"), new EmptyBorder(4, 4, 4, 4)));
         add(search,gbc);
         gbc.gridy++;
@@ -36,7 +39,9 @@ public class SearchBySlangView extends JPanel{
 
         add(result,gbc);
     }
-
+    public String getSearchFunction() {
+        return searchFunction;
+    }
     public Result getResult() {
         return this.result;
     }

@@ -16,10 +16,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static Controllers.DictionaryController.DICTONARY;
+
 public class Quiz1Controller implements ActionListener {
 
     private QuizView quizView;
-    private Dictionary dictionary;
     private Random random = new Random();
     private ArrayList<String> slangWord;
     private String correctAnswer;
@@ -29,36 +30,40 @@ public class Quiz1Controller implements ActionListener {
 
     public void setQuizView(QuizView quizView) {
         this.quizView = quizView;
+        displayQuiz(true);
     }
 
     public Quiz1Controller() {
+
     }
 
     public String getRandomSlangWord() {
-        slangWord = new ArrayList<String>(dictionary.getSlangList().keySet());
-
-
-        return slangWord.get(random.nextInt(slangWord.size()));
-    }
-
-    public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
+        if (DICTONARY.getSlangList().keySet().isEmpty())
+        {
+            slangWord = null;
+            return null;
+        }
+        else {
+            slangWord = new ArrayList<String>(DICTONARY.getSlangList().keySet());
+            int temp = random.nextInt(slangWord.size());
+            if (temp < 0 ) System.exit(0);
+            return slangWord.get(temp);
+        }
     }
 
     public List<String> createQuizOptions(String correctSlang) {
         List<String> options = new ArrayList<>();
 
-        List<String> definitions = dictionary.getSlangList().get(correctSlang);
+        List<String> definitions = DICTONARY.getSlangList().get(correctSlang);
         if (definitions != null && !definitions.isEmpty()) {
             correctAnswer = definitions.get(0);
             options.add(correctAnswer); // Correct answer
-
         }
         int count = 0;
         while(count < 3) {
             String word = slangWord.get(random.nextInt(slangWord.size()));
             if (!word.equals(correctSlang) && count < 3) {
-                List<String> wrongDefinitions = dictionary.getSlangList().get(word);
+                List<String> wrongDefinitions = DICTONARY.getSlangList().get(word);
                 if (wrongDefinitions != null && !wrongDefinitions.isEmpty()) {
                     options.add(wrongDefinitions.get(0));
                     count++;

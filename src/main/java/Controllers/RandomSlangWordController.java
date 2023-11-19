@@ -15,12 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static Controllers.DictionaryController.DICTONARY;
+
 public class RandomSlangWordController implements ActionListener {
     private RandomSlangWordView randomSlangWordView;
-    private Dictionary dictionary;
     private Random random = new Random();
     private ArrayList<String> slangWord;
     public RandomSlangWordController(){
+        if (DICTONARY.getSlangList().keySet() == null)
+        {
+            slangWord = null;
+        }
+        else slangWord = new ArrayList<String>(DICTONARY.getSlangList().keySet());
 
     }
 
@@ -32,20 +38,17 @@ public class RandomSlangWordController implements ActionListener {
     }
 
     public Dictionary getDictionary() {
-        return dictionary;
+        return DICTONARY;
     }
 
 
-    public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
-        slangWord = new ArrayList<String>(dictionary.getSlangList().keySet());
-    }
+
 
     public void randomSlangWord(){
-
+        slangWord = new ArrayList<String>(DICTONARY.getSlangList().keySet());
         String randomWord =  slangWord.get(random.nextInt(slangWord.size()));
-
-        List<String> definitions = dictionary.getSlangList().get(randomWord);
+        System.out.println(randomWord);
+        List<String> definitions = DICTONARY.getSlangList().get(randomWord);
         String text = randomWord + ": ";
         String mergedString = String.join("|", definitions);
         text += mergedString;
@@ -61,7 +64,6 @@ public class RandomSlangWordController implements ActionListener {
         randomSlangWord();
     }
     public void reset(){
-        randomSlangWordView.getRandomButton().removeActionListener(this);
         randomSlangWordView.getShowResult().setText("");
     }
 }

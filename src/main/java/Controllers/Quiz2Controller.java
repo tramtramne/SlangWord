@@ -16,10 +16,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static Controllers.DictionaryController.DICTONARY;
+
 public class Quiz2Controller implements ActionListener {
 
     private QuizView quizView;
-    private Dictionary dictionary;
     private Random random = new Random();
     private ArrayList<String> slangWord;
     private String correctAnswer;
@@ -29,18 +30,27 @@ public class Quiz2Controller implements ActionListener {
 
     public void setQuizView(QuizView quizView) {
         this.quizView = quizView;
+        displayQuiz(true);
     }
 
     public Quiz2Controller() {
     }
-    public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
 
     public String getRandomSlangWord() {
-        slangWord = new ArrayList<String>(dictionary.getSlangList().keySet());
-        return slangWord.get(random.nextInt(slangWord.size()));
+        if (DICTONARY.getSlangList().keySet().isEmpty())
+        {
+            slangWord = null;
+            return null;
+        }
+        else {
+            slangWord = new ArrayList<String>(DICTONARY.getSlangList().keySet());
+            int temp = random.nextInt(slangWord.size());
+            if (temp < 0 ) System.exit(0);
+            return slangWord.get(random.nextInt(slangWord.size()));
+//            return slangWord.size();
+        }
     }
+
 
     public List<String> createQuizOptions(String correctSlang) {
         List<String> options = new ArrayList<>();
@@ -66,7 +76,7 @@ public class Quiz2Controller implements ActionListener {
     public void displayQuiz(boolean isFirst){
         correctAnswer = getRandomSlangWord();
         String question = "";
-        List<String> definitions = dictionary.getSlangList().get(correctAnswer);
+        List<String> definitions = DICTONARY.getSlangList().get(correctAnswer);
         if (definitions != null && !definitions.isEmpty()) {
              question = definitions.get(0);
         }

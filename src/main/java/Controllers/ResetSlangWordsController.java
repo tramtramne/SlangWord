@@ -11,17 +11,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Controllers.DictionaryController.DICTONARY;
+
 public class ResetSlangWordsController{
-    private Dictionary dictionary;
+
 
 
     public Dictionary getDictionary() {
-        return dictionary;
+        return DICTONARY;
     }
 
-    public void setDictionary(Dictionary dictionary) {
-        this.dictionary = dictionary;
-    }
     public ResetSlangWordsController() {}
 }
 
